@@ -1,20 +1,19 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-// !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: 'Next.js + Tailwind CSS + TypeScript Starter',
-  siteName: 'Next.js + Tailwind CSS + TypeScript Starter',
+  title: 'The Code Review',
+  siteName: 'The Code Review',
   description:
-    'A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky',
-  /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://tsnext-tw.thcl.dev',
+    'A software adoption and development trend tracker, built for people making big bets on technology.',
+  url: 'https://codereview.fyi',
   type: 'website',
   robots: 'follow, index',
   /**
    * No need to be filled, will be populated with openGraph function
    * If you wish to use a normal image, just specify the path below
    */
+  // TODO: Update this
   image: 'https://tsnext-tw.thcl.dev/images/large-og.png',
 };
 
@@ -29,7 +28,7 @@ export default function Seo(props: SeoProps) {
     ...defaultMeta,
     ...props,
   };
-  meta['title'] = props.templateTitle
+  meta.title = props.templateTitle
     ? `${props.templateTitle} | ${meta.siteName}`
     : meta.title;
 
@@ -58,8 +57,7 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      {/* // !STARTERCONF Remove or change to your handle */}
-      {/* <meta name='twitter:site' content='@th_clarence' /> */}
+      <meta name='twitter:site' content='@0xNathanGould' />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
@@ -71,11 +69,10 @@ export default function Seo(props: SeoProps) {
             property='og:publish_date'
             content={meta.date}
           />
-          {/* // !STARTERCONF Remove or change to your name */}
           <meta
             name='author'
             property='article:author'
-            content='Theodorus Clarence'
+            content='Endeavor Labs, LLC'
           />
         </>
       )}
@@ -91,7 +88,7 @@ export default function Seo(props: SeoProps) {
   );
 }
 
-// !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
+// TODO: This is the default favicon, you can generate your own from https://realfavicongenerator.net/
 // ! then replace the whole /public/favicon folder and favicon.ico
 const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
   {
