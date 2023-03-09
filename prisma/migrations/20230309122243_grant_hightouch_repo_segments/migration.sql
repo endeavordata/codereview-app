@@ -1,0 +1,1 @@
+grant all on reports_repository_segment to hightouch;

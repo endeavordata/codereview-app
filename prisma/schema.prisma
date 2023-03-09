@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model GitHubRepository {
+  name_with_owner     String      @id
+  observed_at         DateTime
+  created_at          DateTime
+  description         String?
+  stargazer_count     Int
+  fork_count          Int
+  homepage_url        String?
+  is_archived         Boolean
+  is_fork             Boolean
+  is_mirror           Boolean
+  mirror_url          String?
+  primary_language    String?
+  pushed_at           DateTime
+  topic_names         String[]
+  language_names      String[]
+  language_sizes      Int[]
+  
+  @@map("github_repositories")
+}
+
+model RepositorySegmentReport {
+  slug                              String      @id
+  month                             DateTime[]
+  new_stars                         Int[]
+  sitewide_new_stars                Int[]
+  fraction_of_sitewide_stars        Float[]
+  committers                        Int[]
+  sitewide_committers               Int[]
+  fraction_of_sitewide_committers   Float[]
+
+  @@map("reports_repository_segment")
+}
