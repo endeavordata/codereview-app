@@ -39,3 +39,6 @@ CHANGELOG.md
 
 # Styling
 *.css
+
+# Prettier config
+.prettierrc.js

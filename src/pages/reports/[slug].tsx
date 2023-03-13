@@ -1,13 +1,13 @@
-import { PrismaClient, RepositorySegmentReport } from '@prisma/client';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import * as React from 'react';
+import { PrismaClient, RepositorySegmentReport } from '@prisma/client'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import * as React from 'react'
 
-import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
+import Layout from '@/components/layout/Layout'
+import Seo from '@/components/Seo'
 
 type Props = {
-  report: RepositorySegmentReport;
-};
+  report: RepositorySegmentReport
+}
 
 const Report = ({ report }: Props) => {
   return (
@@ -26,25 +26,25 @@ const Report = ({ report }: Props) => {
         </div>
       </main>
     </Layout>
-  );
-};
+  )
+}
 
-export default Report;
+export default Report
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const reports = await prisma.repositorySegmentReport.findMany();
+  const reports = await prisma.repositorySegmentReport.findMany()
   const paths = reports.map((report) => ({
     params: { slug: report.slug },
-  }));
-  return { paths, fallback: false };
-};
+  }))
+  return { paths, fallback: false }
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const params = context.params as { slug: string };
+  const params = context.params as { slug: string }
   const report = await prisma.repositorySegmentReport.findUnique({
     where: { slug: params.slug },
-  });
-  return { props: { report } };
-};
+  })
+  return { props: { report } }
+}
