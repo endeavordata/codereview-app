@@ -105,5 +105,9 @@ psql -d postgres -h 34.75.22.46 -p 5432 -U codereview_app
 ```
 
 ```
-npx prisma migrate dev --name my_new_migration --create-only
+doppler run -- npx prisma migrate dev --name my_new_migration --create-only
+```
+
+```
+npx eslint --fix ./src/pages/reports/\[slug\].tsx
 ```
