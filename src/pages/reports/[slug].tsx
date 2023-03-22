@@ -15,16 +15,16 @@ type Props = {
 
 const Report = ({ report }: Props) => {
   const star_data = {
-    labels: report.month,
+    labels: report.quarter,
     datasets: [
       {
-        label: 'Total new stars',
+        label: 'New stars',
         data: report.new_stars,
         yAxisID: 'y1',
         type: 'bar' as const,
       },
       {
-        label: 'Percent of new stars on GitHub',
+        label: 'New stars (% of GitHub)',
         data: report.fraction_of_sitewide_stars.map((x) => x * 100),
         yAxisID: 'y2',
         type: 'line' as const,
@@ -32,7 +32,7 @@ const Report = ({ report }: Props) => {
     ],
   }
   const commit_data = {
-    labels: report.month,
+    labels: report.quarter,
     datasets: [
       {
         label: 'Active committers',
@@ -41,7 +41,7 @@ const Report = ({ report }: Props) => {
         type: 'bar' as const,
       },
       {
-        label: 'Percent of active committers on GitHub',
+        label: 'Active committers (% of GitHub)',
         data: report.fraction_of_sitewide_committers.map((x) => x * 100),
         yAxisID: 'y2',
         type: 'line' as const,
@@ -49,6 +49,8 @@ const Report = ({ report }: Props) => {
     ],
   }
   const options = {
+    responsive: true,
+    maintainAspectRatio: true,
     scales: {
       y1: {
         beginAtZero: true,
@@ -70,12 +72,20 @@ const Report = ({ report }: Props) => {
     <Layout>
       <Seo templateTitle='Report' />
       <main>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <div>
-            <h3>Repository stars</h3>
-            <Chart type='bar' data={star_data} options={options} />
-            <h3>Development activity</h3>
-            <Chart type='bar' data={commit_data} options={options} />
+        <div className='mx-auto flex max-w-full lg:max-w-7xl'>
+          <div className='hidden w-80 flex-none p-4 lg:block'>
+            <span>Contents</span>
+          </div>
+          <div className='flex-grow py-4 px-8'>
+            <h3>Stargazers</h3>
+            <div className='relative'>
+              <Chart type='bar' data={star_data} options={options} />
+            </div>
+            <h3>Commit activity</h3>
+            {/* <div className="[position:relative] [height:40vh] [width:80vw]"> */}
+            <div className='relative'>
+              <Chart type='bar' data={commit_data} options={options} />
+            </div>
           </div>
         </div>
       </main>

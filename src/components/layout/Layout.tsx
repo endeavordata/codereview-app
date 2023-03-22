@@ -8,7 +8,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div>
       <Header />
       <div>{children}</div>
-      <div>Doop</div>
     </div>
   )
 }

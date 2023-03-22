@@ -33,7 +33,7 @@ model GitHubRepository {
 
 model RepositorySegmentReport {
   slug                              String      @id
-  month                             String[]
+  quarter                           String[]
   new_stars                         Int[]
   sitewide_new_stars                Int[]
   fraction_of_sitewide_stars        Float[]
