@@ -73,18 +73,19 @@ const Report = ({ report }: Props) => {
       <Seo templateTitle='Report' />
       <main>
         <div className='mx-auto flex max-w-full lg:max-w-7xl'>
-          <div className='hidden w-80 flex-none p-4 lg:block'>
+          <div className='hidden w-40 flex-none p-4 lg:block'>
             <span>Contents</span>
           </div>
-          <div className='flex-grow py-4 px-8'>
-            <h3>Stargazers</h3>
-            <div className='relative'>
-              <Chart type='bar' data={star_data} options={options} />
-            </div>
-            <h3>Commit activity</h3>
-            {/* <div className="[position:relative] [height:40vh] [width:80vw]"> */}
-            <div className='relative'>
-              <Chart type='bar' data={commit_data} options={options} />
+          <div className='w-full flex-grow bg-gray-400 p-4'>
+            <div className='flex flex-col bg-blue-400'>
+              <div>
+                <h3>Stargazers</h3>
+                <Chart type='bar' data={star_data} options={options} />
+              </div>
+              <div>
+                <h3>Commit activity</h3>
+                <Chart type='bar' data={commit_data} options={options} />
+              </div>
             </div>
           </div>
         </div>
