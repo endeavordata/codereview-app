@@ -25,7 +25,7 @@ model Repository {
   primary_language  String?
   topic_names       String[]
   language_names    String[]
-  language_sizes    Int[]
+  language_sizes    BigInt[]
   SegmentRepository SegmentRepository[]
 }
 
