@@ -1,6 +1,8 @@
 import { PrismaClient, RepositorySegmentReport } from '@prisma/client'
+import type { ChartOptions } from 'chart.js'
 import { Chart as ChartJS, registerables } from 'chart.js'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Link from 'next/link'
 import * as React from 'react'
 import { Chart } from 'react-chartjs-2'
 
@@ -48,7 +50,7 @@ const Report = ({ report }: Props) => {
       },
     ],
   }
-  const options = {
+  const options: ChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
     scales: {
@@ -64,6 +66,9 @@ const Report = ({ report }: Props) => {
         grid: {
           drawOnChartArea: false,
         },
+        ticks: {
+          callback: (value: string | number) => `${value}%`,
+        },
       },
     },
   }
@@ -72,23 +77,49 @@ const Report = ({ report }: Props) => {
     <Layout>
       <Seo templateTitle='Report' />
       <main>
-        <div className='mx-auto flex max-w-full lg:max-w-7xl'>
-          <div className='hidden w-40 flex-none p-4 lg:block'>
-            <span>Contents</span>
+        <div className='mx-auto lg:max-w-7xl'>
+          <div className='fixed hidden w-72 lg:block'>
+            <ul>
+              <li>
+                <Link href='#stargazers'>Stargazers</Link>
+              </li>
+              <li>
+                <Link href='#commit-activity'>Commit activity</Link>
+              </li>
+            </ul>
           </div>
-          <div className='w-full flex-grow bg-gray-400 p-4'>
-            <div className='flex flex-col bg-blue-400'>
-              <div>
+          <div className='flex flex-col lg:ml-72'>
+            <div id='stargazers'>
+              <h3>Stargazers</h3>
+              <p>Explain chart</p>
+              <Chart type='bar' data={star_data} options={options} />
+            </div>
+            <div id='commit-activity'>
+              <h3>Commit Activity</h3>
+              <Chart type='bar' data={commit_data} options={options} />
+            </div>
+          </div>
+        </div>
+        {/* <div className='mx-auto flex max-w-screen lg:max-w-7xl'>
+          <div className='hidden w-80 flex-none p-4 lg:block'>
+            <ul>
+              <li><Link href='#stargazers'>Stargazers</Link></li>
+              <li><Link href='#commit-activity'>Commit activity</Link></li>
+            </ul>
+          </div>
+          <div className='w-full p-4'>
+            <div className='flex flex-col'>
+              <div id='stargazers'>
                 <h3>Stargazers</h3>
                 <Chart type='bar' data={star_data} options={options} />
               </div>
-              <div>
+              <div id='commit-activity'>
                 <h3>Commit activity</h3>
                 <Chart type='bar' data={commit_data} options={options} />
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
     </Layout>
   )
