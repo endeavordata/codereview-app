@@ -27,72 +27,73 @@ model Repository {
   language_names    String[]
   language_sizes    BigInt[]
   SegmentRepository SegmentRepository[]
+
+  @@map("repository")
 }
 
 model Topic {
   name         String         @id
   SegmentTopic SegmentTopic[]
+
+  @@map("topic")
 }
 
 model ProgrammingLanguage {
   name                   String                   @id
   SegmentPrimaryLanguage SegmentPrimaryLanguage[]
+
+  @@map("programming_language")
 }
 
 // Reporting data model
 
-model Report {
-  id                    String             @id @default(uuid())
-  created_at            DateTime           @default(now())
-  updated_at            DateTime           @updatedAt
-  refreshed_at          DateTime
-  type                  String
-  title                 String
-  description           String?
-  repository_segment    RepositorySegment? @relation(fields: [repository_segment_id], references: [id])
-  repository_segment_id String?
-  data                  Json?
-}
-
 model RepositorySegment {
-  id                    String                   @id @default(uuid())
+  slug                  String                   @id
+  display_name          String
+  description           String?
   created_at            DateTime                 @default(now())
   updated_at            DateTime                 @updatedAt
-  name                  String
   topics                SegmentTopic[]
   topics_required       Int?
   topics_in_description Boolean                  @default(false)
   primary_languages     SegmentPrimaryLanguage[]
+  is_collection         Boolean
   repositories          SegmentRepository[]
-  Report                Report[]
+  payload_refreshed_at  DateTime?
+  payload               Json?
+
+  @@map("repository_segment")
 }
 
 model SegmentTopic {
   created_at DateTime          @default(now())
-  segment    RepositorySegment @relation(fields: [segment_id], references: [id])
+  segment    RepositorySegment @relation(fields: [segment_id], references: [slug])
   segment_id String
   topic      Topic             @relation(fields: [topic_id], references: [name])
   topic_id   String
 
   @@id([segment_id, topic_id])
+  @@map("segment_topic")
 }
 
 model SegmentPrimaryLanguage {
   created_at          DateTime            @default(now())
-  segment             RepositorySegment   @relation(fields: [segment_id], references: [id])
+  segment             RepositorySegment   @relation(fields: [segment_id], references: [slug])
   segment_id          String
   primary_language    ProgrammingLanguage @relation(fields: [primary_language_id], references: [name])
   primary_language_id String
 
   @@id([segment_id, primary_language_id])
+  @@map("segment_primary_language")
 }
 
 model SegmentRepository {
   created_at    DateTime          @default(now())
-  segment       RepositorySegment @relation(fields: [segment_id], references: [id])
+  segment       RepositorySegment @relation(fields: [segment_id], references: [slug])
   segment_id    String
   repository    Repository        @relation(fields: [repository_id], references: [name_with_owner])
   repository_id String
 
   @@id([segment_id, repository_id])
+  @@map("segment_repository")
 }
