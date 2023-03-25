@@ -10,59 +10,74 @@ datasource db {
 // Externally sourced datasets
 
 model Repository {
-  name_with_owner   String              @id
-  observed_at       DateTime
-  created_at        DateTime
-  pushed_at         DateTime?
-  description       String?
-  stargazer_count   Int
-  fork_count        Int
-  homepage_url      String?
-  is_archived       Boolean
-  is_fork           Boolean
-  is_mirror         Boolean
-  mirror_url        String?
-  primary_language  String?
-  topic_names       String[]
-  language_names    String[]
-  language_sizes    BigInt[]
-  SegmentRepository SegmentRepository[]
+  name_with_owner          String              @id
+  observed_at              DateTime
+  created_at               DateTime
+  pushed_at                DateTime?
+  description              String?
+  stargazer_count          Int
+  fork_count               Int
+  homepage_url             String?
+  is_archived              Boolean
+  is_fork                  Boolean
+  is_mirror                Boolean
+  mirror_url               String?
+  primary_language         String?
+  topic_names              String[]
+  language_names           String[]
+  language_sizes           BigInt[]
+  repository_collections   CollectionRepository[]
 
   @@map("repository")
 }
 
 model Topic {
-  name         String         @id
-  SegmentTopic SegmentTopic[]
+  name                 String                     @id
+  repository_segments  SegmentTopic[]
 
   @@map("topic")
 }
 
 model ProgrammingLanguage {
   name                   String                   @id
-  SegmentPrimaryLanguage SegmentPrimaryLanguage[]
+  repository_segments    SegmentPrimaryLanguage[]
 
   @@map("programming_language")
 }
 
 // Reporting data model
 
+model Report {
+  entity_type           String
+  entity_id             String
+  created_at            DateTime                 @default(now())
+  updated_at            DateTime                 @updatedAt
+  report_type           String
+  content               Json?
+
+  @@id([entity_type, entity_id])
+  @@map("report")
+}
+
 model RepositorySegment {
   slug                  String                   @id
   display_name          String
   description           String?
-  created_at            DateTime                 @default(now())
-  updated_at            DateTime                 @updatedAt
   topics                SegmentTopic[]
   topics_required       Int?
   topics_in_description Boolean                  @default(false)
   primary_languages     SegmentPrimaryLanguage[]
-  is_collection         Boolean
-  repositories          SegmentRepository[]
-  payload_refreshed_at  DateTime?
-  payload               Json?
 
   @@map("repository_segment")
+}
+
+model RepositoryCollection {
+  slug                  String                   @id
+  display_name          String
+  description           String?
+  repositories          CollectionRepository[]
+
+  @@map("repository_collection")
 }
 
 model SegmentTopic {
@@ -87,13 +102,13 @@ model SegmentPrimaryLanguage {
   @@map("segment_primary_language")
 }
 
-model SegmentRepository {
-  created_at    DateTime          @default(now())
-  segment       RepositorySegment @relation(fields: [segment_id], references: [slug])
-  segment_id    String
-  repository    Repository        @relation(fields: [repository_id], references: [name_with_owner])
-  repository_id String
+model CollectionRepository {
+  created_at     DateTime                 @default(now())
+  collection     RepositoryCollection     @relation(fields: [collection_id], references: [slug])
+  collection_id  String
+  repository     Repository               @relation(fields: [repository_id], references: [name_with_owner])
+  repository_id  String
 
-  @@id([segment_id, repository_id])
-  @@map("segment_repository")
+  @@id([collection_id, repository_id])
+  @@map("collection_repository")
 }
