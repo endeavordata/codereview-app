@@ -45,7 +45,9 @@ model ProgrammingLanguage {
   @@map("programming_language")
 }
 
-// Reporting data model
+// Models that use a hightouch_id as the primary key only do so because Hightouch
+// doesn't support multi-column keys. These can be removed if Hightouch is no longer 
+// used.
 
 model Report {
   entity_type           String
@@ -54,8 +56,8 @@ model Report {
   updated_at            DateTime                 @updatedAt
   report_type           String
   content               Json?
+  hightouch_id          String                   @id
 
-  @@id([entity_type, entity_id])
   @@map("report")
 }
 
@@ -81,13 +83,13 @@ model RepositoryCollection {
 }
 
 model SegmentTopic {
-  created_at DateTime          @default(now())
-  segment    RepositorySegment @relation(fields: [segment_id], references: [slug])
-  segment_id String
-  topic      Topic             @relation(fields: [topic_id], references: [name])
-  topic_id   String
+  created_at    DateTime          @default(now())
+  segment       RepositorySegment @relation(fields: [segment_id], references: [slug])
+  segment_id    String
+  topic         Topic             @relation(fields: [topic_id], references: [name])
+  topic_id      String
+  hightouch_id  String            @id
 
-  @@id([segment_id, topic_id])
   @@map("segment_topic")
 }
 
@@ -108,7 +110,7 @@ model CollectionRepository {
   collection_id  String
   repository     Repository               @relation(fields: [repository_id], references: [name_with_owner])
   repository_id  String
-
-  @@id([collection_id, repository_id])
+  hightouch_id   String                   @id
+  
   @@map("collection_repository")
 }
