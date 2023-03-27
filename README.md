@@ -101,13 +101,35 @@ This starter is using [conventional commits](https://www.conventionalcommits.org
 ## CodeReview notes
 
 ```
-psql -d postgres -h 34.75.22.46 -p 5432 -U codereview_app
+psql -d postgres -h 34.75.41.246 -p 5432 -U codereview_app
 ```
 
 ```
-doppler run -- npx prisma migrate dev --name my_new_migration --create-only
+doppler run -- npx prisma migrate dev --name init --create-only
 ```
 
 ```
 npx eslint --fix ./src/pages/reports/\[slug\].tsx
 ```
+
+## Information architecture
+
+Reports (db table)
+
+- slug (i.e. report name)
+- user_id (optional, indicating owner)
+- is_public
+- template
+- config (specs for report)
+- data
+
+Template (defined in code)
+
+- Config UI
+- Template component
+  - Text
+  - Cards
+
+Card (component)
+
+- Display logic

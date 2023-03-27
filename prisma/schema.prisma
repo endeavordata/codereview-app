@@ -53,8 +53,7 @@ model Report {
   entity_type           String
   entity_id             String
   created_at            DateTime                 @default(now())
-  updated_at            DateTime                 @updatedAt
-  report_type           String
+  updated_at            DateTime?                @updatedAt
   content               Json?
   hightouch_id          String                   @id
 
