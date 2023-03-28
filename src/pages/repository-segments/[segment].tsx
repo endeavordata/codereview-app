@@ -51,20 +51,22 @@ export default RepositorySegmentPage
 const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const repositorySegments = await prisma.repositorySegment.findMany()
-  const paths = repositorySegments.map((segment) => ({
-    params: { slug: segment.slug },
+  const reports = await prisma.report.findMany({
+    where: { entity_type: 'repository_segment' },
+  })
+  const paths = reports.map((report) => ({
+    params: { segment: report.entity_id },
   }))
   return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const params = context.params as { slug: string }
+  const params = context.params as { segment: string }
   const segment = await prisma.repositorySegment.findUnique({
-    where: { slug: params.slug },
+    where: { slug: params.segment },
   })
   const report = await prisma.report.findUnique({
-    where: { hightouch_id: `repository_segment:${params.slug}` },
+    where: { hightouch_id: `repository_segment:${params.segment}` },
   })
   const content = report?.content as Prisma.JsonObject
   return { props: { segment, content } }

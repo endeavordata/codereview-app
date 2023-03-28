@@ -51,8 +51,12 @@ export default TopicPage
 const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const topics = await prisma.topic.findMany()
-  const paths = topics.map((topic) => ({ params: { topic: topic.name } }))
+  const reports = await prisma.report.findMany({
+    where: { entity_type: 'topic' },
+  })
+  const paths = reports.map((report) => ({
+    params: { topic: report.entity_id },
+  }))
   return { paths, fallback: false }
 }
 
