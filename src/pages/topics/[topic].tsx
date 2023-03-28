@@ -53,6 +53,7 @@ const prisma = new PrismaClient()
 export const getStaticPaths: GetStaticPaths = async () => {
   const reports = await prisma.report.findMany({
     where: { entity_type: 'topic' },
+    take: 100,
   })
   const paths = reports.map((report) => ({
     params: { topic: report.entity_id },

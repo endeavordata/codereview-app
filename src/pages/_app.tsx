@@ -1,14 +1,33 @@
-import { AppProps } from 'next/app';
+import { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
-import '@/styles/globals.css';
+import '@/styles/globals.css'
 
-/**
- * Note: The `Layout` component is called in every page using `np` snippets.
- * If you have consistent layout across all page, you can add it here too.
- */
+import { rudderInitialize } from '../lib/rudderInitialize'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  const router = useRouter()
+
+  useEffect(() => {
+    // Call page() on initial visit
+    const callRudderPage = async () => {
+      await rudderInitialize()
+      window.rudderanalytics.page()
+    }
+    callRudderPage()
+
+    // Call page() on route change
+    const handleRouteChange = () => {
+      window.rudderanalytics.page()
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
+  return <Component {...pageProps} />
 }
 
-export default MyApp;
+export default MyApp
