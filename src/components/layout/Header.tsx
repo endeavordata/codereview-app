@@ -2,8 +2,6 @@ import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 
-import TCRLogo from '../../../public/images/tcrlogo.png'
-
 const navigation = [
   { name: 'Topics', href: '#', current: true },
   { name: 'About', href: '#', current: false },
@@ -21,7 +19,12 @@ export default function Header() {
             <div className='mx-auto max-w-[90rem] pr-4'>
               <div className='flex h-16 justify-between'>
                 <div className='flex flex-shrink-0 items-center'>
-                  <Image alt='The Code Review logo' src={TCRLogo} width={240} />
+                  <Image
+                    alt='The Code Review logo'
+                    src='/images/TCRLogo.png'
+                    height={180}
+                    width={240}
+                  />
                 </div>
                 <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
                   {navigation.map((item) => (
