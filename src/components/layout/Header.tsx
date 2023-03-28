@@ -22,7 +22,7 @@ export default function Header() {
                   <Image
                     alt='The Code Review logo'
                     src='/images/TCRLogo.png'
-                    height={180}
+                    height={56}
                     width={240}
                   />
                 </div>

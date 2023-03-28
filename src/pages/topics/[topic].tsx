@@ -52,13 +52,17 @@ const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const reports = await prisma.report.findMany({
-    where: { entity_type: 'topic' },
-    take: 100,
+    where: {
+      entity_type: 'topic',
+      // TODO: Decide what to pre-render, if anything. This is a
+      // placeholder, just for testing
+      entity_id: { in: ['svelte', 'machine-learning', 'wasm'] },
+    },
   })
   const paths = reports.map((report) => ({
     params: { topic: report.entity_id },
   }))
-  return { paths, fallback: false }
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -70,5 +74,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     where: { hightouch_id: `topic:${params.topic}` },
   })
   const content = report?.content as Prisma.JsonObject
-  return { props: { topic, content } }
+  return {
+    props: { topic, content },
+    revalidate: 60 * 60 * 24, // no more than daily
+  }
 }
