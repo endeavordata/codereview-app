@@ -2,11 +2,10 @@ import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 
-import TCRLogo from '../../..//public/images/tcrlogo.png'
+import TCRLogo from '../../../public/images/tcrlogo.png'
 
 const navigation = [
-  { name: 'Dashboards', href: '#', current: true },
-  { name: 'Blog', href: '#', current: false },
+  { name: 'Topics', href: '#', current: true },
   { name: 'About', href: '#', current: false },
 ]
 
