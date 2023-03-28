@@ -19,7 +19,7 @@ export default function Header() {
       >
         {({ open }) => (
           <>
-            <div className='mx-auto max-w-7xl pr-4'>
+            <div className='mx-auto max-w-[90rem] pr-4'>
               <div className='flex h-16 justify-between'>
                 <div className='flex flex-shrink-0 items-center'>
                   <Image alt='The Code Review logo' src={TCRLogo} width={240} />

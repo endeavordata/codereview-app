@@ -18,7 +18,7 @@ const TopicPage = ({ content }: Props) => {
     <Layout>
       <Seo templateTitle='Report' />
       <main>
-        <div className='mx-auto lg:max-w-7xl'>
+        <div className='mx-auto lg:max-w-[90rem]'>
           <div className='fixed hidden w-72 lg:block'>
             <ul>
               <li>

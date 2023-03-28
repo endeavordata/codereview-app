@@ -133,3 +133,29 @@ Template (defined in code)
 Card (component)
 
 - Display logic
+
+## Pre-launch todo's
+
+### Stories
+
+- Integrate GitHub archive data (1)
+- Add GitHub issue statistics to topic pages (1)
+- Add about page (1)
+- Add topic directory and search to home page (3)
+- Integrate email list signup (2)
+- Add top repos (1)
+- Add top contributors (1)
+- Add summary stats and key insights (2)
+- Set up hosting with ISR (2)
+- Configure robots.txt and sitemap.xml (1)
+- Add analytics (1)
+
+Total: 16
+
+### UI
+
+### Data
+
+### Infra
+
+### SEO
