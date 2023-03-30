@@ -4,7 +4,7 @@
  */
 module.exports = {
   additionalPaths: async () => {
-    const { getReportPaths } = await import('@/lib/reports')
+    const { getReportPaths } = await import('../lib/reports')
     const paths = await getReportPaths()
     return paths.map((path) => ({ loc: path }))
   },
