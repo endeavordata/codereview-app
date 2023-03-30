@@ -51,18 +51,7 @@ export default TopicPage
 const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const reports = await prisma.report.findMany({
-    where: {
-      entity_type: 'topic',
-      // TODO: Decide what to pre-render, if anything. This is a
-      // placeholder, just for testing
-      entity_id: { in: ['svelte', 'machine-learning', 'wasm'] },
-    },
-  })
-  const paths = reports.map((report) => ({
-    params: { topic: report.entity_id },
-  }))
-  return { paths, fallback: 'blocking' }
+  return { paths: [], fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {

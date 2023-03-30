@@ -51,13 +51,7 @@ export default RepositorySegmentPage
 const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const reports = await prisma.report.findMany({
-    where: { entity_type: 'repository_segment' },
-  })
-  const paths = reports.map((report) => ({
-    params: { segment: report.entity_id },
-  }))
-  return { paths, fallback: false }
+  return { paths: [], fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
