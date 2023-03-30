@@ -1,4 +1,4 @@
-import { getReportPaths } from './lib/reports'
+import { getReportPaths } from '@/lib/reports'
 
 /**
  * @type {import('next-sitemap').IConfig}
