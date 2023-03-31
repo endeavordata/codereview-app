@@ -7,6 +7,17 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
+  rewrites: async () => [
+    {
+      source: '/sitemap.xml',
+      destination: '/sitemap',
+    },
+    {
+      source: '/sitemap-:page.xml',
+      destination: '/sitemap/:page',
+    },
+  ],
+
   // Uncoment to add domain whitelist
   // images: {
   //   domains: [
@@ -28,10 +39,10 @@ const nextConfig = {
           },
         },
       ],
-    });
+    })
 
-    return config;
+    return config
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

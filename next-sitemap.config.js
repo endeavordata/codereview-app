@@ -3,12 +3,7 @@
  * @see https://github.com/iamvishnusankar/next-sitemap#readme
  */
 module.exports = {
-  additionalPaths: async () => {
-    const { getReportPaths } = await import('../lib/reports')
-    const paths = await getReportPaths()
-    return paths.map((path) => ({ loc: path }))
-  },
-  siteUrl: 'https://thecodereview.fyi',
+  siteUrl: process.env.HOST_URL,
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
