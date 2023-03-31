@@ -4,9 +4,6 @@
  */
 module.exports = {
   siteUrl: process.env.HOST_URL,
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   generateIndexSitemap: false,
-  robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/' }],
-  },
 }

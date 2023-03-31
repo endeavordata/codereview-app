@@ -9,7 +9,7 @@ const nextConfig = {
 
   rewrites: async () => [
     {
-      source: '/sitemap.xml',
+      source: '/index-sitemap.xml',
       destination: '/sitemap',
     },
     {
