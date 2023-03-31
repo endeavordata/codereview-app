@@ -6,4 +6,4 @@ Allow: /
 Host: https://thecodereview.fyi
 
 # Sitemaps
-Sitemap: https://thecodereview.fyi/sitemap-index.xml
+Sitemap: https://thecodereview.fyi/index-sitemap.xml
