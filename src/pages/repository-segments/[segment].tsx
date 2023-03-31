@@ -51,7 +51,7 @@ export default RepositorySegmentPage
 const prisma = new PrismaClient()
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  return { paths: [], fallback: false }
+  return { paths: [], fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
