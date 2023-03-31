@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export const revalidate = async (req: NextApiRequest, res: NextApiResponse) => {
+const revalidate = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.query.secret !== process.env.REVALIDATE_SECRET) {
     res.status(401).json({ message: 'Invalid secret' })
   }
@@ -11,3 +11,5 @@ export const revalidate = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).send('Error revalidating')
   }
 }
+
+export default revalidate
