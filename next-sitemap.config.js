@@ -5,6 +5,7 @@
 module.exports = {
   siteUrl: process.env.HOST_URL,
   generateRobotsTxt: true,
+  generateIndexSitemap: true,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
   },

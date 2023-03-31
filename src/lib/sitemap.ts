@@ -1,1 +1,1 @@
-export const URLS_PER_SITEMAP = 10000
+export const URLS_PER_SITEMAP = 5000
