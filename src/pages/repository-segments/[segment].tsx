@@ -63,5 +63,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     where: { hightouch_id: `repository_segment:${params.segment}` },
   })
   const content = report?.content as Prisma.JsonObject
-  return { props: { segment, content } }
+  return {
+    props: { segment, content },
+    revalidate: 60 * 60 * 24 * 7, // no more than weekly
+  }
 }

@@ -65,6 +65,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const content = report?.content as Prisma.JsonObject
   return {
     props: { topic, content },
-    revalidate: 60 * 60 * 24, // no more than daily
+    revalidate: 60 * 60 * 24 * 7, // no more than weekly
   }
 }
