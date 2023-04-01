@@ -4,10 +4,10 @@ import { NextApiRequest, NextApiResponse } from 'next'
 const prisma = new PrismaClient()
 
 const listReports = async (req: NextApiRequest, res: NextApiResponse) => {
-  const pageSize = 100 // Hardcoded for now
+  const pageSize = Math.min(Number(req.query.size || 25), 1000)
+  const currentPage = Number(req.query.page) || 1
   const totalReports = await prisma.report.count()
   const totalPages = Math.ceil(totalReports / pageSize)
-  const currentPage = Number(req.query.page) || 1
 
   const reports = await prisma.report.findMany({
     where: { entity_type: 'topic' }, // Hardcoded for now
