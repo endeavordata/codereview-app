@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 interface ResultListProps {
   results: string[]
   currentPage: number
@@ -15,11 +17,20 @@ export function ResultList({
 }: ResultListProps) {
   return (
     <>
-      <ul>
-        {results.map((result) => (
-          <li key={`result_${result}`}>{result}</li>
-        ))}
-      </ul>
+      <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>
+        {results.map((result) => {
+          return (
+            <div key={`item_${result}`} className='m-2'>
+              <Link
+                href={`/topics/${result}`}
+                className='inline-flex rounded-full bg-blue-100 px-2 text-sm font-semibold leading-6 text-gray-800 hover:bg-blue-200'
+              >
+                {result}
+              </Link>
+            </div>
+          )
+        })}
+      </div>
       <div>
         <button disabled={currentPage === 1} onClick={onPrevPage}>
           Prev

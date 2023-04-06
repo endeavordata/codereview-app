@@ -5,11 +5,19 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { ResultList } from './ResultList'
 import { SearchBox } from './SearchBox'
 
-const SearchComponent = () => {
+interface SearchComponentProps {
+  initialResults: string[]
+  initialTotalPages: number
+}
+
+const SearchComponent = ({
+  initialResults,
+  initialTotalPages,
+}: SearchComponentProps) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [page, setPage] = useState(1)
-  const [results, setResults] = useState<string[]>([])
-  const [totalPages, setTotalPages] = useState(0)
+  const [results, setResults] = useState<string[]>(initialResults)
+  const [totalPages, setTotalPages] = useState(initialTotalPages)
   const debouncedSearchTerm = useDebounce(searchTerm, 250, 3)
 
   async function searchTopics() {
@@ -35,9 +43,7 @@ const SearchComponent = () => {
   }
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      searchTopics()
-    }
+    searchTopics()
   }, [debouncedSearchTerm, page])
 
   return (

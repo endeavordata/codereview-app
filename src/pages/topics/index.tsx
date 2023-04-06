@@ -11,17 +11,10 @@ export default function HomePage() {
       <main>
         <h1>Here are some topics</h1>
         <div className='p-8'>
-          {/* <ItemGrid items={[
-            'python', 'that', 'fish', 'red', 'very', 'stury', 'pumpkin', 'just',
-            'server', 'nine', 'coupons', 'planet', 'solar', 'system', 'earth',
-            'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto',
-            'corona', 'miller', 'coors', 'bud-light', 'heineken', 'yellow', 'css',
-            'green', 'blue', 'red', 'orange', 'purple', 'black', 'white', 'grey',
-            'brown', 'shapes', 'gold', 'silver', 'bronze', 'copper', 'aluminum',
-            'steel', 'iron', 'magnesium', 'titanium', 'tungsten', 'platinum',
-            'apple', 'orange', 'exchange', 'grape', 'strawberry', 'blueberry',
-          ]} /> */}
-          <SearchComponent />
+          <SearchComponent
+            initialResults={['python', 'rust', 'windows', 'css', 'typescript']}
+            initialTotalPages={100}
+          />
         </div>
       </main>
     </Layout>
