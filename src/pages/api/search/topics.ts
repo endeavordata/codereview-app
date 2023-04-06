@@ -21,6 +21,12 @@ const searchTopics = async (req: NextApiRequest, res: NextApiResponse) => {
   const totalTopics = topics.found
   const totalPages = Math.ceil(totalTopics / pageSize)
 
+  const cacheMaxAge = 24 * 60 * 60 // 1 day
+  const cacheStaleWhileRevalidate = 72 * 60 * 60 // 3 days
+  res.setHeader(
+    'Cache-Control',
+    `public, s-maxage=${cacheMaxAge}, stale-while-revalidate=${cacheStaleWhileRevalidate}}`
+  )
   return res.json({
     topics: topicsPayload,
     pagination: {
