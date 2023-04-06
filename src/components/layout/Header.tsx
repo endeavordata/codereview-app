@@ -1,13 +1,17 @@
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const navigation = [
-  { name: 'Topics', href: '#', current: true },
-  { name: 'About', href: '#', current: false },
+  { name: 'Home', href: '/' },
+  { name: 'Topics', href: '/topics' },
+  { name: 'About', href: '/about' },
 ]
 
 export default function Header() {
+  const router = useRouter()
   return (
     <div className='min-h-full'>
       <Disclosure
@@ -19,12 +23,14 @@ export default function Header() {
             <div className='mx-auto max-w-[90rem] pr-4'>
               <div className='flex h-16 justify-between'>
                 <div className='flex flex-shrink-0 items-center'>
-                  <Image
-                    alt='The Code Review logo'
-                    src='/images/TCRLogo.png'
-                    height={56}
-                    width={240}
-                  />
+                  <Link href='/'>
+                    <Image
+                      alt='The Code Review logo'
+                      src='/images/TCRLogo.png'
+                      height={56}
+                      width={240}
+                    />
+                  </Link>
                 </div>
                 <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
                   {navigation.map((item) => (
@@ -32,11 +38,13 @@ export default function Header() {
                       key={item.name}
                       href={item.href}
                       className={
-                        item.current
+                        item.href === router.pathname
                           ? 'text-md inline-flex items-center px-1 pt-3 font-mono font-medium text-gray-900'
                           : 'text-md inline-flex items-center px-1 pt-3 font-mono font-medium text-gray-500 hover:text-gray-700'
                       }
-                      aria-current={item.current ? 'page' : undefined}
+                      aria-current={
+                        item.href === router.pathname ? 'page' : undefined
+                      }
                     >
                       {item.name}
                     </a>
@@ -64,11 +72,13 @@ export default function Header() {
                     as='a'
                     href={item.href}
                     className={
-                      item.current
+                      item.href === router.pathname
                         ? 'block border-gray-500 bg-gray-50 py-2                       pl-3 pr-4 font-mono text-base font-medium text-gray-700'
                         : 'text-gray-60 block border-transparent                       py-2 pl-3 pr-4 font-mono text-base font-medium hover:bg-gray-50 hover:text-gray-800'
                     }
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={
+                      item.href === router.pathname ? 'page' : undefined
+                    }
                   >
                     {item.name}
                   </Disclosure.Button>
