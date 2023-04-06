@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler } from 'react'
+import React, { ChangeEventHandler, useCallback } from 'react'
 
 interface SearchBoxProps {
   searchTerm: string
@@ -6,11 +6,14 @@ interface SearchBoxProps {
 }
 
 export function SearchBox({ searchTerm, onSearchTermChange }: SearchBoxProps) {
-  const handleSearchTermChange: ChangeEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    onSearchTermChange(event.target.value)
-  }
+  const handleSearchTermChange = useCallback<
+    ChangeEventHandler<HTMLInputElement>
+  >(
+    (event) => {
+      onSearchTermChange(event.target.value)
+    },
+    [onSearchTermChange]
+  )
 
   return (
     <div>

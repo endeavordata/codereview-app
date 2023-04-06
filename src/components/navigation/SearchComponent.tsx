@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { useDebounce } from '@/hooks/useDebounce'
+
 import { ResultList } from './ResultList'
 import { SearchBox } from './SearchBox'
 
@@ -8,6 +10,7 @@ const SearchComponent = () => {
   const [page, setPage] = useState(1)
   const [results, setResults] = useState<string[]>([])
   const [totalPages, setTotalPages] = useState(0)
+  const debouncedSearchTerm = useDebounce(searchTerm, 250, 3)
 
   async function searchTopics() {
     const url = `/api/search/topics?q=${encodeURIComponent(
@@ -31,14 +34,11 @@ const SearchComponent = () => {
     setPage(page + 1)
   }
 
-  //TODO: Fix debounce and linter issues
-  function neverHappen() {
-    searchTopics()
-  }
-  neverHappen()
   useEffect(() => {
-    //searchTopics()
-  }, [searchTerm, page])
+    if (debouncedSearchTerm) {
+      searchTopics()
+    }
+  }, [debouncedSearchTerm, page])
 
   return (
     <>
