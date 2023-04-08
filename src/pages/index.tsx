@@ -18,14 +18,40 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
 
       <main>
         <section className='bg-orange-100'>
-          <div className='layout relative flex flex-col py-12 text-center'>
-            <h1 className='mt-16 text-4xl'>Software ecosystems, quantified</h1>
-            <p className='mt-6 text-xl text-gray-800'>
-              Data and insights about software, as it gets created and used.
-            </p>
-            <p className='mt-1 text-xl text-gray-800'>
-              Built with love for technology bettors.
-            </p>
+          <div className='flex flex-col items-center py-12'>
+            <div className='text-center'>
+              <h1 className='mt-16 text-4xl'>
+                Software ecosystems, quantified
+              </h1>
+              <p className='mt-6 text-xl text-gray-800'>
+                Data and insights about software, as it gets created and used.
+              </p>
+              <p className='mt-1 text-xl text-gray-800'>
+                Built with love for technology bettors.
+              </p>
+            </div>
+            <div className='w-full pt-12 pb-8 text-center'>
+              <form className='mt-10'>
+                <label htmlFor='email-address' className='sr-only'>
+                  Email address
+                </label>
+                <input
+                  id='email-address'
+                  name='email'
+                  type='email'
+                  autoComplete='email'
+                  required
+                  className='w-80 rounded-sm border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-400 sm:leading-6'
+                  placeholder='Enter your email'
+                />
+                <button
+                  type='submit'
+                  className='text-md mx-4 flex-none rounded-sm bg-orange-400 px-4 py-4 font-semibold text-white shadow-sm hover:bg-orange-500'
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
           </div>
         </section>
         <section>
@@ -73,18 +99,17 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
               <div className='pl-8 md:pl-12'>
                 <ul className='list-outside list-disc'>
                   <li className='mb-4 text-lg'>
-                    An <span className='font-semibold'>engineering leader</span>{' '}
-                    trying decide what tools are worth learning or using in your
-                    stack.
+                    An <span className='font-semibold'>engineer</span> trying
+                    decide what tools are worth learning or using in your stack.
                   </li>
                   <li className='mb-4 text-lg'>
                     An <span className='font-semibold'>investor</span> looking
                     to get data-driven about the developer infrastructure and
-                    comercial open source space.
+                    commercial open source space.
                   </li>
                   <li className='mb-4 text-lg'>
                     A <span className='font-semibold'>developer marketer</span>{' '}
-                    or <span className='font-semibold'>product leader</span>{' '}
+                    or <span className='font-semibold'>product manager</span>{' '}
                     tring to stay on top of trends that affect your customers.
                   </li>
                 </ul>
