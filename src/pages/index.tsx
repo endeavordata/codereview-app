@@ -44,8 +44,8 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
               bettors.
             </p>
           </div>
-          <div className='layout flex flex-wrap justify-end py-12'>
-            <div className='w-full rounded-2xl bg-gray-100 py-16 pl-12 pr-10 shadow-lg md:w-1/2'>
+          <div className='flex flex-col items-center justify-center space-x-8 space-y-16 py-12 px-6 xl:flex-row'>
+            <div className='max-w-2xl rounded-2xl bg-gray-100 py-12 pl-12 pr-10 shadow-lg xl:max-w-xl'>
               <h2 className='mb-1 text-2xl font-bold'>technology bettor</h2>
               <p className='mb-1 text-lg text-gray-800'>
                 <em>/təkˈnäləjē ˈbetər/</em>
@@ -64,17 +64,16 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
                 </li>
               </ol>
             </div>
-            <div className='w-full pt-16 pl-4 md:w-1/2 md:pl-8'>
-              <p className='mb-2 text-2xl font-semibold'>
-                Are you a technology bettor?
+            <div className='max-w-2xl px-4 pb-6 xl:max-w-xl'>
+              <p className='mb-6 text-center text-2xl italic'>
+                You might be a{' '}
+                <span className='font-semibold'>technology bettor</span> if
+                you're...
               </p>
-              <p className='mb-2 pt-4 pb-2 text-lg'>
-                You might be if you're...
-              </p>
-              <div className='pl-4'>
-                <ul className='list-outside list-disc text-gray-800'>
+              <div className='pl-8 md:pl-12'>
+                <ul className='list-outside list-disc'>
                   <li className='mb-4 text-lg'>
-                    An <span className='font-semibold'>technologist</span>{' '}
+                    An <span className='font-semibold'>engineering leader</span>{' '}
                     trying decide what tools are worth learning or using in your
                     stack.
                   </li>
@@ -84,10 +83,7 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
                     comercial open source space.
                   </li>
                   <li className='mb-4 text-lg'>
-                    A{' '}
-                    <span className='font-semibold'>
-                      developer-focused marketer
-                    </span>{' '}
+                    A <span className='font-semibold'>developer marketer</span>{' '}
                     or <span className='font-semibold'>product leader</span>{' '}
                     tring to stay on top of trends that affect your customers.
                   </li>
