@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import * as React from 'react'
 
+import EmailSubscribeForm from '@/components/EmailSubscribeForm'
 import Layout from '@/components/layout/Layout'
 import UnderlineLink from '@/components/links/UnderlineLink'
 import SearchComponent from '@/components/navigation/SearchComponent'
@@ -31,26 +32,7 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
               </p>
             </div>
             <div className='w-full pt-12 pb-8 text-center'>
-              <form className='mt-10'>
-                <label htmlFor='email-address' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  id='email-address'
-                  name='email'
-                  type='email'
-                  autoComplete='email'
-                  required
-                  className='w-80 rounded-sm border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-400 sm:leading-6'
-                  placeholder='Enter your email'
-                />
-                <button
-                  type='submit'
-                  className='text-md mx-4 flex-none rounded-sm bg-orange-400 px-4 py-4 font-semibold text-white shadow-sm hover:bg-orange-500'
-                >
-                  Subscribe
-                </button>
-              </form>
+              <EmailSubscribeForm />
             </div>
           </div>
         </section>
