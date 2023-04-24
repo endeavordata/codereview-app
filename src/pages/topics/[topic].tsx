@@ -4,6 +4,7 @@ import Link from 'next/link'
 import * as React from 'react'
 
 import ActiveCommitters from '@/components/cards/ActiveCommitters'
+import IssueUsers from '@/components/cards/IssueUsers'
 import NewStars from '@/components/cards/NewStars'
 import Layout from '@/components/layout/Layout'
 import Seo from '@/components/Seo'
@@ -27,6 +28,9 @@ const TopicPage = ({ content }: Props) => {
               <li>
                 <Link href='#commit-activity'>Commit activity</Link>
               </li>
+              <li>
+                <Link href='#issue-activity'>Issue activity</Link>
+              </li>
             </ul>
           </div>
           <div className='flex flex-col lg:ml-72'>
@@ -38,6 +42,10 @@ const TopicPage = ({ content }: Props) => {
             <div id='commit-activity'>
               <h3>Commit Activity</h3>
               <ActiveCommitters data={content} />
+            </div>
+            <div id='issue-activity'>
+              <h3>Issue Activity</h3>
+              <IssueUsers data={content} />
             </div>
           </div>
         </div>
