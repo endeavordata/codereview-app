@@ -42,14 +42,14 @@ const EmailSubscribeForm: React.FC = () => {
               placeholder='Enter your email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className='w-96 rounded-sm border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-400 sm:w-80 sm:leading-6'
+              className='w-96 rounded-md border-0 px-3.5 py-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-400 sm:w-80 sm:leading-6'
               required
             />
           </div>
           <div>
             <button
               type='submit'
-              className={`w-text-md mx-4 w-96 flex-none rounded-sm bg-orange-400 px-4 py-4 font-semibold text-white shadow-sm hover:bg-orange-500 sm:w-28 ${
+              className={`w-text-md mx-4 w-96 flex-none rounded-md bg-orange-400 px-4 py-4 font-semibold text-white shadow-sm hover:bg-orange-500 sm:w-28 ${
                 formState === 'submitting' ? 'cursor-wait' : ''
               }`}
               disabled={formState === 'submitting'}

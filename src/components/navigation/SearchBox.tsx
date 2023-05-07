@@ -16,14 +16,21 @@ export function SearchBox({ searchTerm, onSearchTermChange }: SearchBoxProps) {
   )
 
   return (
-    <div>
-      <label htmlFor='search'>Search topics:</label>
-      <input
-        id='search'
-        type='text'
-        value={searchTerm}
-        onChange={handleSearchTermChange}
-      />
+    <div className='my-6 flex w-full flex-col items-center space-y-8'>
+      <div>
+        <label htmlFor='search' className='text-3xl'>
+          Search Topics
+        </label>
+      </div>
+      <div>
+        <input
+          id='search'
+          type='text'
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+          className='w-72 rounded-md shadow-sm sm:w-96'
+        />
+      </div>
     </div>
   )
 }

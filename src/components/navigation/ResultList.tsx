@@ -16,8 +16,8 @@ export function ResultList({
   onNextPage,
 }: ResultListProps) {
   return (
-    <>
-      <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5'>
+    <div className='flex flex-col space-y-8'>
+      <div className='grid grid-cols-2 pl-16 sm:pl-32 md:grid-cols-3 xl:grid-cols-4'>
         {results.map((result) => {
           return (
             <div key={`item_${result}`} className='m-2'>
@@ -31,16 +31,24 @@ export function ResultList({
           )
         })}
       </div>
-      <div>
-        <button disabled={currentPage === 1} onClick={onPrevPage}>
-          Prev
+      <div className='text-center'>
+        <button
+          disabled={currentPage === 1}
+          onClick={onPrevPage}
+          className='inline-flex items-center px-8 hover:text-gray-600 disabled:text-gray-500'
+        >
+          &larr; Prev
         </button>
         <span>{`Page ${currentPage} of ${totalPages}`}</span>
-        <button disabled={currentPage === totalPages} onClick={onNextPage}>
-          Next
+        <button
+          disabled={currentPage === totalPages}
+          onClick={onNextPage}
+          className='inline-flex items-center px-8 hover:text-gray-600 disabled:text-gray-500'
+        >
+          Next &rarr;
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

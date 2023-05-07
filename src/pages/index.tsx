@@ -39,16 +39,18 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
           </div>
         </section>
         <section>
-          <div className='p-8'>
-            <SearchComponent
-              initialResults={topics}
-              initialTotalPages={totalPages}
-            />
+          <div className='mt-4 flex flex-col items-center p-8'>
+            <div className='w-full max-w-5xl xl:max-w-7xl'>
+              <SearchComponent
+                initialResults={topics}
+                initialTotalPages={totalPages}
+              />
+            </div>
           </div>
         </section>
 
         <section className='bg-white'>
-          <div className='mt-12 text-center'>
+          <div className='mt-16 text-center'>
             <p className='mb-2 text-2xl italic'>
               The Code Review was built by technology bettors, for technology
               bettors.
@@ -102,7 +104,7 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
           </div>
         </section>
 
-        <footer className='bg-white py-6'>
+        <footer className='bg-white py-6 pt-12'>
           <div className='layout text-center text-gray-700'>
             © {new Date().getFullYear()} By{' '}
             <UnderlineLink href='https://endeavorlabs.co'>

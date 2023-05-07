@@ -23,7 +23,7 @@ const SearchComponent = ({
   async function searchTopics() {
     const url = `/api/search/topics?q=${encodeURIComponent(
       searchTerm
-    )}&page=${page}`
+    )}&page=${page}&size=24`
     const { topics, pagination } = await fetch(url).then((res) => res.json())
     setResults(topics?.map((hit: { name: string }) => hit.name as string) || [])
     setTotalPages(pagination.total_pages)
@@ -47,19 +47,23 @@ const SearchComponent = ({
   }, [debouncedSearchTerm, page])
 
   return (
-    <>
-      <SearchBox
-        searchTerm={searchTerm}
-        onSearchTermChange={handleSearchTermChange}
-      />
-      <ResultList
-        results={results}
-        currentPage={page}
-        totalPages={totalPages}
-        onPrevPage={handlePrevPage}
-        onNextPage={handleNextPage}
-      />
-    </>
+    <div className='flex flex-col'>
+      <div>
+        <SearchBox
+          searchTerm={searchTerm}
+          onSearchTermChange={handleSearchTermChange}
+        />
+      </div>
+      <div className='py-6'>
+        <ResultList
+          results={results}
+          currentPage={page}
+          totalPages={totalPages}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
+      </div>
+    </div>
   )
 }
 
