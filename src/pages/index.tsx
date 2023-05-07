@@ -20,18 +20,20 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
       <main>
         <section className='bg-orange-100'>
           <div className='flex flex-col items-center py-12'>
-            <div className='text-center'>
+            <div className='whitespace-break-spaces px-16 text-center'>
               <h1 className='mt-16 text-4xl'>
                 Software ecosystems, quantified
               </h1>
               <p className='mt-6 text-xl text-gray-800'>
-                Data and insights about software, as it gets created and used.
-              </p>
-              <p className='mt-1 text-xl text-gray-800'>
-                Built with love for technology bettors.
+                <span className='inline text-xl md:block'>
+                  Data and insights about software, as it gets created and used.{' '}
+                </span>
+                <span className='text-xl'>
+                  Built with love for technology bettors.
+                </span>
               </p>
             </div>
-            <div className='w-full pt-12 pb-8 text-center'>
+            <div className='mt-16 mb-10 w-full text-center'>
               <EmailSubscribeForm />
             </div>
           </div>

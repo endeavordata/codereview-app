@@ -8,7 +8,7 @@ type Props = {
   data: Prisma.JsonObject
 }
 
-const TicketUsers = ({ data }: Props) => {
+const IssueUsers = ({ data }: Props) => {
   const commit_data = {
     labels: data.quarter,
     datasets: [
@@ -31,4 +31,4 @@ const TicketUsers = ({ data }: Props) => {
   return <BarWithPercentLine data={commit_data as ChartData} />
 }
 
-export default TicketUsers
+export default IssueUsers
