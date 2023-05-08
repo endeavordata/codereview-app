@@ -5,3 +5,10 @@ export const getQueryParameter = (val: string | string[] | undefined) => {
     return val
   }
 }
+
+export const generateIdFromName = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}

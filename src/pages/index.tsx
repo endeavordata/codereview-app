@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import EmailSubscribeForm from '@/components/EmailSubscribeForm'
 import Layout from '@/components/layout/Layout'
-import UnderlineLink from '@/components/links/UnderlineLink'
 import SearchComponent from '@/components/navigation/SearchComponent'
 import Seo from '@/components/Seo'
 
@@ -16,7 +15,6 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
   return (
     <Layout>
       <Seo templateTitle='Home' />
-
       <main>
         <section className='bg-orange-100'>
           <div className='flex flex-col items-center py-12'>
@@ -103,15 +101,6 @@ const HomePage = ({ topics, totalPages }: HomePageProps) => {
             </div>
           </div>
         </section>
-
-        <footer className='bg-white py-6 pt-12'>
-          <div className='layout text-center text-gray-700'>
-            © {new Date().getFullYear()} By{' '}
-            <UnderlineLink href='https://endeavorlabs.co'>
-              Endeavor Labs, LLC
-            </UnderlineLink>
-          </div>
-        </footer>
       </main>
     </Layout>
   )
