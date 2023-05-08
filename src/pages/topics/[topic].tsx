@@ -20,7 +20,7 @@ const TopicPage = ({ content }: Props) => {
       <Seo templateTitle='Report' />
       <main>
         <div className='mx-auto lg:max-w-[90rem]'>
-          <div className='fixed hidden w-72 lg:block'>
+          <div className='fixed hidden w-64 py-16 pl-6 text-lg lg:block'>
             <ul>
               <li>
                 <Link href='#stargazers'>Stargazers</Link>
@@ -33,17 +33,17 @@ const TopicPage = ({ content }: Props) => {
               </li>
             </ul>
           </div>
-          <div className='flex flex-col lg:ml-72'>
-            <div id='stargazers'>
+          <div className='flex flex-col space-y-2 md:space-y-4 lg:ml-64'>
+            <div id='stargazers' className='p-4'>
               <h3>Stargazers</h3>
               <p>Explain chart</p>
               <NewStars data={content} />
             </div>
-            <div id='commit-activity'>
+            <div id='commit-activity' className='p-4'>
               <h3>Commit Activity</h3>
               <ActiveCommitters data={content} />
             </div>
-            <div id='issue-activity'>
+            <div id='issue-activity' className='p-4'>
               <h3>Issue Activity</h3>
               <IssueUsers data={content} />
             </div>

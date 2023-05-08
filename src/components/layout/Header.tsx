@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Topics', href: '/topics' },
   { name: 'About', href: '/about' },
 ]
 
@@ -20,7 +19,7 @@ export default function Header() {
       >
         {({ open }) => (
           <>
-            <div className='mx-auto max-w-[90rem] pr-4'>
+            <div className='mx-auto max-w-[90rem] pl-0 sm:pl-2 md:pl-4'>
               <div className='flex h-16 justify-between'>
                 <div className='flex flex-shrink-0 items-center'>
                   <Link href='/'>
@@ -32,7 +31,7 @@ export default function Header() {
                     />
                   </Link>
                 </div>
-                <div className='hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
+                <div className='hidden pr-6 sm:-my-px sm:ml-6 sm:flex sm:space-x-8'>
                   {navigation.map((item) => (
                     <a
                       key={item.name}
@@ -50,7 +49,7 @@ export default function Header() {
                     </a>
                   ))}
                 </div>
-                <div className='-mr-2 flex items-center sm:hidden'>
+                <div className='-mr-2 flex items-center pr-2 sm:hidden'>
                   {/* Mobile menu button */}
                   <Disclosure.Button className='inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2'>
                     <span className='sr-only'>Open main menu</span>
